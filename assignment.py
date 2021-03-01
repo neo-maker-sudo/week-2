@@ -70,15 +70,20 @@ print(result)  # show [0, 2] because nums[0]+nums[2] is 9
 
 def maxZeros(nums):
     # 請用你的程式補完這個函式的區塊
-    maxNumber = 1
-    for n, a in zip(nums[1:], range(1, len(nums))):
-        if n == 0 and nums[a-1] == 1:
+    maxNumber = 0
+    num = 0
+    for n in nums:
+        if n >= 0:
             maxNumber += 1
-        elif n == 1 and nums[a-1] == 1:
-            maxNumber = 0
-    print(maxNumber)
+            if num < maxNumber and n == 0:
+                num = maxNumber
+            if n == 1:
+                maxNumber = 0
+    print(num)
 
 
 maxZeros([0, 1, 0, 0])  # 得到 2
 maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0])  # 得到 4
 maxZeros([1, 1, 1, 1, 1])  # 得到 0
+
+
