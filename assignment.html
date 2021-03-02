@@ -53,14 +53,20 @@
         function maxProduct(nums) {
             // 請用你的程式補完這個函式的區塊
             let sum = 0
+            let maxNmber = 0
             for (var i = 0; i < nums.length; i++) {
-                for (var j = i + 1; j < nums.length; j++) {
-                    if (sum < nums[i] * nums[j]) {
+                for (var j = 0; j < nums.length; j++) {
+                    if (i !== j) {
                         sum = nums[i] * nums[j]
+                        if (maxNmber < sum) {
+                            maxNmber = sum
+                        } else if (maxNmber == 0 && sum < 0) {
+                            maxNmber = sum
+                        }
                     }
                 }
             }
-            console.log(sum)
+            console.log(maxNmber)
         }
 
         maxProduct([5, 20, 2, 6]) // 得到 120 因為 20 和 6 相乘得到最大值

@@ -41,17 +41,20 @@ avg({
 
 def maxProduct(nums):
     # 請用你的程式補完這個函式的區塊
-    sum = 0
-    for x in nums:
-        for y in nums:
-            if sum < x*y and x != y:
-                sum = x*y
-    print(sum)
-
+    num = 0
+    maxNumber = 0
+    for i, a in zip(nums, range(0, len(nums))):
+        for j, b in zip(nums, range(0, len(nums))):
+            if a != b:
+                num = i*j
+                if maxNumber < num:
+                    maxNumber = num
+                elif num < 0 and maxNumber == 0:
+                    maxNumber = num
+    print(maxNumber)
 
 maxProduct([5, 20, 2, 6])  # 得到 120 因為 20 和 6 相乘得到最大值
 maxProduct([10, -20, 0, 3])  # 得到 30 因為 10 和 3 相乘得到最大值
-
 
 def towSum(nums, target):
     # your code here
